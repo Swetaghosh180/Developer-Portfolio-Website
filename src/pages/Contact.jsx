@@ -17,7 +17,7 @@ const up = (delay = 0) => ({
 
 const socials = [
   { icon: RiGithubLine,      label: 'GitHub',    href: 'https://github.com/Swetaghosh180',    color: '#f1f5f9' },
-  { icon: RiLinkedinBoxLine, label: 'LinkedIn',  href: 'https://linkedin.com/swetaghosh05',  color: '#0a66c2' },
+  { icon: RiLinkedinBoxLine, label: 'LinkedIn',  href: 'https://linkedin.com/in/swetaghosh05',  color: '#0a66c2' },
   { icon: RiInstagramLine,   label: 'Instagram', href: 'https://instagram.com/ms.swetaghosh', color: '#e1306c' },
   { icon: RiMailLine,        label: 'Email',     href: 'mailto:swetaghosh665@gmail.com', color: '#6366f1' },
 ]
@@ -86,8 +86,10 @@ export default function Contact() {
             Get In <span className="gradient-text-2">Touch</span>
           </h1>
           <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.8, maxWidth: 460, marginTop: '0.5rem' }}>
-            Open to freelance projects and full-time opportunities.
-            Let's build something exceptional together.
+            Open to <strong style={{ color: '#94a3b8', fontWeight: 600 }}>AI Engineer</strong>,{' '}
+            <strong style={{ color: '#94a3b8', fontWeight: 600 }}>ML Engineer</strong>, and{' '}
+            <strong style={{ color: '#94a3b8', fontWeight: 600 }}>Frontend Developer</strong> roles.
+            I respond within 24 hours. Let’s build something intelligent together.
           </p>
         </motion.div>
 
@@ -200,10 +202,21 @@ export default function Contact() {
                 userSelect: 'none',
               }}>"</div>
               <p style={{ fontSize: '0.83rem', color: '#94a3b8', lineHeight: 1.75, fontStyle: 'italic', position: 'relative' }}>
-                I turn ideas into pixel-perfect, performant web experiences.
+                I build complete AI-powered applications — from React frontends to Python ML backends — that solve real problems.
               </p>
               <p style={{ fontSize: '0.72rem', color: '#6366f1', fontWeight: 700, marginTop: '0.6rem' }}>— Sweta Ghosh</p>
             </motion.div>
+
+            {/* Download Resume */}
+            <a
+              href="/Sweta_Ghosh_Resume.pdf"
+              download
+              className="btn-primary"
+              style={{ display: 'inline-flex', justifyContent: 'center', fontSize: '0.82rem' }}
+            >
+              <ion-icon name="download-outline" style={{ fontSize: '15px' }} />
+              Download Resume
+            </a>
           </motion.div>
 
           {/* Right — form */}

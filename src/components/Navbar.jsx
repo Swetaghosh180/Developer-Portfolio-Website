@@ -78,7 +78,7 @@ export default function Navbar() {
                 Sweta<span style={{ color: '#6366f1' }}>.</span>
               </span>
               <span style={{ fontSize: '0.6rem', color: '#475569', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '0.1rem' }}>
-                Frontend Dev
+                AI Engineer
               </span>
             </div>
           </NavLink>

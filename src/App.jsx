@@ -1,12 +1,27 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useSpring } from 'framer-motion'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import About from './pages/About'
-import Resume from './pages/Resume'
-import Portfolio from './pages/Portfolio'
-import Contact from './pages/Contact'
+
+const Resume          = lazy(() => import('./pages/Resume'))
+const Portfolio       = lazy(() => import('./pages/Portfolio'))
+const Contact         = lazy(() => import('./pages/Contact'))
+
+function PageLoader() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+      <div style={{
+        width: 36, height: 36,
+        border: '2.5px solid rgba(99,102,241,0.2)',
+        borderTopColor: '#6366f1',
+        borderRadius: '50%',
+        animation: 'spin 0.7s linear infinite',
+      }} />
+    </div>
+  )
+}
 
 /* Spring-based cursor glow — desktop/hover-capable only */
 function CursorGlow() {
@@ -46,13 +61,15 @@ function AnimatedRoutes() {
   const location = useLocation()
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/"          element={<About />} />
-        <Route path="/about"     element={<About />} />
-        <Route path="/resume"    element={<Resume />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact"   element={<Contact />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/"                           element={<About />} />
+          <Route path="/about"                      element={<About />} />
+          <Route path="/resume"                     element={<Resume />} />
+          <Route path="/portfolio"                  element={<Portfolio />} />
+          <Route path="/contact"                    element={<Contact />} />
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   )
 }
@@ -68,7 +85,7 @@ export default function App() {
       </div>
       <CursorGlow />
       <Navbar />
-      <main style={{ minHeight: '100vh' }}>
+      <main role="main" style={{ minHeight: '100vh' }}>
         <AnimatedRoutes />
       </main>
       <ScrollToTop />

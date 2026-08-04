@@ -1,32 +1,37 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useSpring } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import SkillCard from '../components/SkillCard'
 import {
-  RiMailLine, RiMapPinLine,
   RiGithubLine, RiLinkedinBoxLine, RiInstagramLine,
   RiCodeSSlashLine, RiSmartphoneLine, RiPaletteLine, RiSpeedLine,
+  RiDownloadLine, RiArrowRightLine,
 } from 'react-icons/ri'
 import { RiHtml5Line, RiCss3Line, RiJavascriptLine, RiReactjsLine } from 'react-icons/ri'
-import { SiTailwindcss, SiGit, SiFigma, SiVuedotjs } from 'react-icons/si'
+import { SiTailwindcss, SiGit, SiFigma, SiVuedotjs, SiPython, SiPytorch, SiOpencv, SiFastapi } from 'react-icons/si'
 import profileImg from '../assets/images/Photo1.jpeg'
 
 const tech = [
   { icon: RiHtml5Line,      label: 'HTML5',      color: '#e34f26' },
   { icon: RiCss3Line,       label: 'CSS3',       color: '#1572b6' },
   { icon: RiJavascriptLine, label: 'JavaScript', color: '#f7df1e' },
-  { icon: SiVuedotjs,       label: 'Vue.js',     color: '#42b883' },
   { icon: RiReactjsLine,    label: 'React',      color: '#61dafb' },
   { icon: SiTailwindcss,    label: 'Tailwind',   color: '#06b6d4' },
+  { icon: SiPython,         label: 'Python',     color: '#3776ab' },
+  { icon: SiFastapi,        label: 'FastAPI',    color: '#009688' },
+  { icon: SiOpencv,         label: 'OpenCV',     color: '#5c3ee8' },
+  { icon: SiPytorch,        label: 'PyTorch',    color: '#ee4c2c' },
+  { icon: SiVuedotjs,       label: 'Vue.js',     color: '#42b883' },
   { icon: SiGit,            label: 'Git',        color: '#f05032' },
   { icon: SiFigma,          label: 'Figma',      color: '#f24e1e' },
 ]
 
 const services = [
-  { icon: RiCodeSSlashLine, title: 'Web Development',   desc: 'Building fast, responsive web apps with React and modern tooling.', color: '#6366f1' },
-  { icon: RiPaletteLine,    title: 'UI/UX Design',      desc: 'Designing clean, intuitive interfaces focused on user experience.',  color: '#a78bfa' },
-  { icon: RiSmartphoneLine, title: 'Responsive Design', desc: 'Pixel-perfect layouts that work seamlessly on all screen sizes.',    color: '#22c55e' },
-  { icon: RiSpeedLine,      title: 'Performance',       desc: 'Optimizing for speed, SEO, and Core Web Vitals.',                   color: '#f59e0b' },
+  { icon: RiCodeSSlashLine, title: 'AI Applications',      desc: 'Building intelligent web applications powered by Machine Learning, Computer Vision, FastAPI, and React — from image analysis to predictive systems.', color: '#6366f1' },
+  { icon: RiSpeedLine,      title: 'Computer Vision',      desc: 'Developing image analysis systems using OpenCV, YOLOv8, EasyOCR, and Vision-Language Models (BLIP) for object detection, OCR, and captioning.',    color: '#ec4899' },
+  { icon: RiPaletteLine,    title: 'Frontend Engineering', desc: 'Creating responsive, accessible, and scalable user interfaces with React, Tailwind CSS, and component-based architecture.',                        color: '#a78bfa' },
+  { icon: RiSmartphoneLine, title: 'Machine Learning',     desc: 'Building predictive models, data pipelines, and AI-driven software solutions using Python, Scikit-learn, and PyTorch.',                          color: '#22c55e' },
 ]
 
 const socials = [
@@ -166,7 +171,7 @@ function ProfileAvatar() {
         {!imgError ? (
           <img
             src={profileImg}
-            alt="Sweta Ghosh"
+            alt="Sweta Ghosh — AI-Driven Frontend Developer, profile photo"
             onError={() => setImgError(true)}
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', borderRadius: '50%' }}
           />
@@ -263,7 +268,7 @@ export default function About() {
                       background: '#22c55e', boxShadow: '0 0 6px #22c55e',
                       animation: 'pulse-dot 2s ease-in-out infinite', flexShrink: 0,
                     }} />
-                    Frontend Developer
+                    AI-Driven Frontend Developer
                   </motion.span>
                 </div>
 
@@ -311,9 +316,11 @@ export default function About() {
                       style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '1.1rem' }}
                     >
                       {[
-                        { ionIcon: 'mail-outline',      label: 'EMAIL',    value: 'swetaghosh665@gmail.com',              href: 'mailto:swetaghosh665@gmail.com' },
-                        { ionIcon: 'location-outline',  label: 'LOCATION', value: 'Jharkhand, India',         href: null },
-                        { ionIcon: 'briefcase-outline', label: 'STATUS',   value: 'Open to Work',                         href: null, highlight: true },
+                        { ionIcon: 'mail-outline',      label: 'EMAIL',    value: 'swetaghosh665@gmail.com',   href: 'mailto:swetaghosh665@gmail.com' },
+                        { ionIcon: 'call-outline',      label: 'PHONE',    value: '+91 7484963888',             href: 'tel:+917484963888' },
+                        { ionIcon: 'location-outline',  label: 'LOCATION', value: 'Jharkhand, India',           href: null },
+                        { ionIcon: 'briefcase-outline', label: 'STATUS',   value: 'Open to Internship & Full-Time', href: null, highlight: true },
+                        { ionIcon: 'time-outline',      label: 'RESPONSE', value: 'Within 24 hours',                href: null },
                       ].map(({ ionIcon, label, value, href, highlight }) => (
                         <motion.div key={label} variants={fadeSlide}
                           style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}
@@ -327,6 +334,7 @@ export default function About() {
                             {/* Ionicons web component */}
                             <ion-icon
                               name={ionIcon}
+                              aria-hidden="true"
                               style={{ fontSize: '16px', color: '#94a3b8' }}
                             />
                           </div>
@@ -354,7 +362,8 @@ export default function About() {
                     {/* Social links using Ionicons */}
                     <div style={{ display: 'flex', gap: '0.6rem' }}>
                       {socials.map(({ ionIcon, href, color, label }, i) => (
-                        <motion.a key={i} href={href} target="_blank" rel="noreferrer" title={label}
+                        <motion.a key={i} href={href} target="_blank" rel="noreferrer"
+                          aria-label={`${label} profile (opens in new tab)`}
                           initial={{ opacity: 0, scale: 0.5 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.07 * i, type: 'spring', stiffness: 300, damping: 16 }}
@@ -381,7 +390,7 @@ export default function About() {
                             e.currentTarget.querySelector('ion-icon').style.color = '#64748b'
                           }}
                         >
-                          <ion-icon name={ionIcon} style={{ fontSize: '17px', color: '#64748b', transition: 'color 0.2s' }} />
+                          <ion-icon name={ionIcon} aria-hidden="true" style={{ fontSize: '17px', color: '#64748b', transition: 'color 0.2s' }} />
                         </motion.a>
                       ))}
                     </div>
@@ -392,6 +401,132 @@ export default function About() {
           </div>
         </motion.div>
 
+        {/* ══ HERO HEADLINE BLOCK ══ */}
+        <Card delay={0.02} style={{ padding: '1.6rem' }}>
+
+          {/* Availability badge */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+            background: 'rgba(34,197,94,0.08)',
+            border: '1px solid rgba(34,197,94,0.22)',
+            borderRadius: '999px',
+            padding: '0.3rem 0.9rem',
+            marginBottom: '1rem',
+          }}>
+            <span style={{
+              width: 6, height: 6, borderRadius: '50%',
+              background: '#22c55e', boxShadow: '0 0 6px #22c55e',
+              animation: 'pulse-dot 2s ease-in-out infinite', flexShrink: 0,
+            }} />
+            <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#22c55e', letterSpacing: '0.04em' }}>
+              Available for AI/ML &amp; Frontend Opportunities
+            </span>
+          </div>
+
+          {/* Main headline */}
+          <h2 style={{
+            fontSize: 'clamp(1.35rem, 3.5vw, 1.9rem)',
+            fontWeight: 800,
+            color: '#f1f5f9',
+            letterSpacing: '-0.03em',
+            lineHeight: 1.15,
+            marginBottom: '0.55rem',
+          }}>
+            AI-Driven Frontend Developer
+          </h2>
+
+          {/* Subtitle row */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.9rem' }}>
+            {[
+              'Aspiring AI Engineer',
+              'Machine Learning Enthusiast',
+              'Computer Vision Enthusiast',
+              'Python Developer',
+            ].map((t, i) => (
+              <span key={t} style={{
+                fontSize: '0.72rem', fontWeight: 600,
+                color: i === 0 ? '#818cf8' : '#64748b',
+                letterSpacing: '0.01em',
+              }}>
+                {i > 0 && <span style={{ marginRight: '0.4rem', color: '#334155' }}>•</span>}
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {/* Description */}
+          <p style={{
+            color: '#64748b',
+            fontSize: '0.9rem',
+            lineHeight: 1.85,
+            marginBottom: '1rem',
+          }}>
+            I build intelligent AI-powered web applications by combining React, Python, FastAPI,
+            Machine Learning, and Computer Vision to create scalable, user-centric solutions
+            that solve real-world problems.
+          </p>
+
+          {/* Tech chips */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+            {[
+              { label: 'React',            color: '#61dafb' },
+              { label: 'Python',           color: '#3776ab' },
+              { label: 'FastAPI',          color: '#009688' },
+              { label: 'Machine Learning', color: '#a78bfa' },
+              { label: 'Computer Vision',  color: '#ec4899' },
+              { label: 'YOLOv8',           color: '#f59e0b' },
+              { label: 'OpenCV',           color: '#5c3ee8' },
+              { label: 'PyTorch',          color: '#ee4c2c' },
+            ].map(({ label, color }) => (
+              <span key={label} style={{
+                display: 'inline-flex',
+                background: `${color}10`,
+                border: `1px solid ${color}28`,
+                borderRadius: '7px',
+                padding: '0.22rem 0.65rem',
+                fontSize: '0.68rem', fontWeight: 700,
+                color,
+                letterSpacing: '0.02em',
+              }}>
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA row */}
+          <div style={{ marginTop: '1.1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+            <a
+              href="/Sweta_Ghosh_Resume.pdf"
+              download
+              className="btn-primary"
+              aria-label="Download Sweta Ghosh's resume as PDF"
+              style={{ fontSize: '0.8rem', padding: '0.5rem 1.2rem' }}
+            >
+              <RiDownloadLine size={14} aria-hidden="true" />
+              Download Resume
+            </a>
+            <Link
+              to="/portfolio"
+              className="btn-ghost"
+              aria-label="View my projects"
+              style={{ fontSize: '0.8rem', padding: '0.5rem 1.2rem' }}
+            >
+              View Projects <RiArrowRightLine size={14} aria-hidden="true" />
+            </Link>
+            <a
+              href="https://github.com/Swetaghosh180"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost"
+              aria-label="Visit Sweta Ghosh's GitHub profile (opens in new tab)"
+              style={{ fontSize: '0.8rem', padding: '0.5rem 1.2rem' }}
+            >
+              <RiGithubLine size={14} aria-hidden="true" /> GitHub
+            </a>
+          </div>
+
+        </Card>
+
         {/* ══ ABOUT ME CARD ══ */}
         <Card delay={0.05} style={{ padding: '1.6rem' }}>
           <SectionHeading>About Me</SectionHeading>
@@ -400,21 +535,44 @@ export default function About() {
             transition={{ duration: 0.55, delay: 0.1 }}
             style={{ color: '#94a3b8', lineHeight: 1.9, fontSize: '0.91rem', marginBottom: '0.9rem' }}
           >
-            Enthusiastic and detail-oriented Front-End Developer with a strong foundation in HTML5,
-            CSS3, JavaScript, and Vue.js, along with knowledge of React.js. Experienced in building
-            responsive and user-friendly web interfaces through projects and internship experience.
+            I am an <strong style={{ color: '#e2e8f0', fontWeight: 600 }}>AI-Driven Frontend Developer</strong> with
+            a strong foundation in modern web development and a growing specialization in
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Artificial Intelligence</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Machine Learning</strong>, and
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Computer Vision</strong>.
+            My journey began with building responsive, scalable, and accessible web applications
+            using React, JavaScript, Tailwind CSS, and REST APIs — including production work
+            during my internship at Roadlyft Rideshare Pvt. Ltd.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.14 }}
+            style={{ color: '#94a3b8', lineHeight: 1.9, fontSize: '0.91rem', marginBottom: '0.9rem' }}
+          >
+            Driven by curiosity and a passion for solving real-world problems, I expanded into
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Python</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Machine Learning</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> Deep Learning</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> FastAPI</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> OpenCV</strong>,
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> YOLOv8</strong>, and
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> PyTorch</strong>.
+            Today I build complete AI-powered applications — owning the full stack:
+            UI, REST API, AI model integration, and deployment.
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.18 }}
-            style={{ color: '#94a3b8', lineHeight: 1.9, fontSize: '0.91rem', marginBottom: '1rem' }}
+            style={{ color: '#94a3b8', lineHeight: 1.9, fontSize: '0.91rem', marginBottom: '1.2rem' }}
           >
-            Passionate about creating modern UI designs and enhancing user experience. A quick learner
-            with strong problem-solving and teamwork skills, eager to contribute to innovative
-            web development projects.
+            I am actively seeking opportunities to collaborate with experienced engineers,
+            contribute to impactful AI products, and grow into a professional
+            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}> AI Engineer</strong> while
+            continuously improving my software engineering and machine learning skills.
           </motion.p>
 
-          {/* Interests row using Ionicons */}
+          <p style={{ fontSize: '0.62rem', color: '#475569', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '0.65rem' }}>Core Focus</p>
+          {/* Core Focus tags */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -423,11 +581,13 @@ export default function About() {
             style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}
           >
             {[
-              { icon: 'code-slash-outline',    label: 'Clean Code' },
-              { icon: 'color-palette-outline', label: 'UI Design' },
-              { icon: 'rocket-outline',        label: 'Performance' },
-              { icon: 'accessibility-outline', label: 'Accessibility' },
-              { icon: 'phone-portrait-outline', label: 'Mobile First' },
+              { icon: 'hardware-chip-outline',  label: 'AI-Powered Web Apps' },
+              { icon: 'analytics-outline',       label: 'Machine Learning' },
+              { icon: 'eye-outline',             label: 'Computer Vision' },
+              { icon: 'logo-python',             label: 'Python Development' },
+              { icon: 'code-slash-outline',      label: 'React & Frontend' },
+              { icon: 'server-outline',          label: 'FastAPI Backend' },
+              { icon: 'layers-outline',          label: 'End-to-End AI' },
             ].map(({ icon, label }) => (
               <span key={label} style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
@@ -466,6 +626,86 @@ export default function About() {
               >
                 <SkillCard icon={icon} label={label} color={color} />
               </motion.div>
+            ))}
+          </div>
+        </Card>
+
+        {/* ══ CURRENTLY LEARNING CARD ══ */}
+        <Card delay={0.18} style={{ padding: '1.6rem' }}>
+          <SectionHeading>Currently Learning</SectionHeading>
+          <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.75, marginBottom: '1.1rem' }}>
+            Actively deepening expertise across these areas — each tied to a real project or goal.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {[
+              {
+                label: 'Deep Learning & Neural Networks',
+                detail: 'CNNs, transfer learning, model fine-tuning with PyTorch',
+                color: '#ee4c2c', pct: 55,
+              },
+              {
+                label: 'LLM Integration & Prompt Engineering',
+                detail: 'Connecting open-source LLMs to FastAPI backends',
+                color: '#a78bfa', pct: 40,
+              },
+              {
+                label: 'MLOps & Model Deployment',
+                detail: 'Docker, model serving, CI/CD for ML pipelines',
+                color: '#22c55e', pct: 35,
+              },
+              {
+                label: 'Data Structures & Algorithms',
+                detail: 'Consistent LeetCode practice for engineering interviews',
+                color: '#f59e0b', pct: 50,
+              },
+            ].map(({ label, detail, color, pct }) => (
+              <div key={label} style={{
+                background: 'rgba(255,255,255,0.025)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '12px',
+                padding: '0.85rem 1rem',
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#e2e8f0' }}>{label}</span>
+                  <span style={{ fontSize: '0.68rem', color, fontWeight: 700, background: `${color}12`, padding: '0.1rem 0.55rem', borderRadius: 999, border: `1px solid ${color}25` }}>{pct}%</span>
+                </div>
+                <p style={{ fontSize: '0.75rem', color: '#475569', marginBottom: '0.55rem' }}>{detail}</p>
+                <div style={{ height: 3, background: 'rgba(255,255,255,0.05)', borderRadius: 999, overflow: 'hidden' }}>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${pct}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ height: '100%', borderRadius: 999, background: `linear-gradient(90deg, ${color}, ${color}88)`, boxShadow: `0 0 8px ${color}44` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {/* ══ ENGINEERING PRINCIPLES CARD ══ */}
+        <Card delay={0.2} style={{ padding: '1.6rem' }}>
+          <SectionHeading>Engineering Principles</SectionHeading>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+            {[
+              { icon: 'construct-outline',    title: 'Build to Learn',         desc: 'Every project is a deliberate exercise in a new skill — not just shipping, but understanding why.' },
+              { icon: 'layers-outline',       title: 'End-to-End Ownership',   desc: 'I own the full stack: UI, API, ML model, and deployment. No black boxes.' },
+              { icon: 'people-outline',       title: 'User-First Thinking',    desc: 'AI features only matter if users can understand and trust them. UX is not optional.' },
+              { icon: 'git-branch-outline',   title: 'Iterative Improvement',  desc: 'Ship a working v1, measure, then improve. Perfection is the enemy of progress.' },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} style={{
+                background: 'rgba(99,102,241,0.04)',
+                border: '1px solid rgba(99,102,241,0.12)',
+                borderRadius: '14px',
+                padding: '1rem',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', marginBottom: '0.45rem' }}>
+                  <ion-icon name={icon} aria-hidden="true" style={{ fontSize: '16px', color: '#818cf8' }} />
+                  <span style={{ fontSize: '0.83rem', fontWeight: 700, color: '#e2e8f0' }}>{title}</span>
+                </div>
+                <p style={{ fontSize: '0.76rem', color: '#475569', lineHeight: 1.75 }}>{desc}</p>
+              </div>
             ))}
           </div>
         </Card>
