@@ -160,7 +160,7 @@ export default function Resume() {
             </p>
           </div>
           <motion.a
-            href="/Sweta_Ghosh_Resume.pdf" download
+            href="/Sweta_Ghosh_AI_ML_CV_Engineer-CV.pdf" download
             className="btn-primary"
             aria-label="Download Sweta Ghosh's resume as PDF"
             whileHover={{ scale: 1.05, y: -2 }}

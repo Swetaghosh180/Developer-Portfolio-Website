@@ -496,7 +496,7 @@ export default function About() {
           {/* CTA row */}
           <div style={{ marginTop: '1.1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
             <a
-              href="/Sweta_Ghosh_Resume.pdf"
+              href="/Sweta_Ghosh_AI_ML_CV_Engineer-CV.pdf"
               download
               className="btn-primary"
               aria-label="Download Sweta Ghosh's resume as PDF"
