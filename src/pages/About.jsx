@@ -13,18 +13,18 @@ import { SiTailwindcss, SiGit, SiFigma, SiVuedotjs, SiPython, SiPytorch, SiOpenc
 import profileImg from '../assets/images/Photo1.jpeg'
 
 const tech = [
-  { icon: RiHtml5Line,      label: 'HTML5',      color: '#e34f26' },
-  { icon: RiCss3Line,       label: 'CSS3',       color: '#1572b6' },
-  { icon: RiJavascriptLine, label: 'JavaScript', color: '#f7df1e' },
-  { icon: RiReactjsLine,    label: 'React',      color: '#61dafb' },
-  { icon: SiTailwindcss,    label: 'Tailwind',   color: '#06b6d4' },
-  { icon: SiPython,         label: 'Python',     color: '#3776ab' },
-  { icon: SiFastapi,        label: 'FastAPI',    color: '#009688' },
-  { icon: SiOpencv,         label: 'OpenCV',     color: '#5c3ee8' },
-  { icon: SiPytorch,        label: 'PyTorch',    color: '#ee4c2c' },
-  { icon: SiVuedotjs,       label: 'Vue.js',     color: '#42b883' },
-  { icon: SiGit,            label: 'Git',        color: '#f05032' },
-  { icon: SiFigma,          label: 'Figma',      color: '#f24e1e' },
+  { icon: RiHtml5Line,      label: 'HTML5',      color: '#e34f26', level: 'Advanced' },
+  { icon: RiCss3Line,       label: 'CSS3',       color: '#1572b6', level: 'Advanced' },
+  { icon: RiJavascriptLine, label: 'JavaScript', color: '#f7df1e', level: 'Advanced' },
+  { icon: RiReactjsLine,    label: 'React',      color: '#61dafb', level: 'Advanced' },
+  { icon: SiTailwindcss,    label: 'Tailwind',   color: '#06b6d4', level: 'Advanced' },
+  { icon: SiPython,         label: 'Python',     color: '#3776ab', level: 'Advanced' },
+  { icon: SiFastapi,        label: 'FastAPI',    color: '#009688', level: 'Intermediate' },
+  { icon: SiOpencv,         label: 'OpenCV',     color: '#5c3ee8', level: 'Intermediate' },
+  { icon: SiPytorch,        label: 'PyTorch',    color: '#ee4c2c', level: 'Intermediate' },
+  { icon: SiVuedotjs,       label: 'Vue.js',     color: '#42b883', level: 'Intermediate' },
+  { icon: SiGit,            label: 'Git',        color: '#f05032', level: 'Intermediate' },
+  { icon: SiFigma,          label: 'Figma',      color: '#f24e1e', level: 'Basic' },
 ]
 
 const services = [
@@ -166,24 +166,39 @@ function ServiceCard({ icon: Icon, title, desc, color, index }) {
 function ProfileAvatar() {
   const [imgError, setImgError] = useState(false)
   return (
-    <div className="avatar-ring">
-      <div className="avatar-inner">
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+      style={{
+        width: 72, height: 72, borderRadius: 18, padding: 6,
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
+        border: '1px solid rgba(255,255,255,0.06)',
+        boxShadow: '0 8px 30px rgba(99,102,241,0.06)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+      }}
+      className="avatar-ring"
+    >
+      <div style={{
+        width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden',
+        boxShadow: '0 6px 18px rgba(167,139,250,0.06), inset 0 1px 0 rgba(255,255,255,0.02)'
+      }} className="avatar-inner">
         {!imgError ? (
           <img
             src={profileImg}
             alt="Sweta Ghosh — AI-Driven Frontend Developer, profile photo"
             onError={() => setImgError(true)}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', borderRadius: '50%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
           />
         ) : (
           <span style={{
             fontSize: '1.85rem', fontWeight: 900,
             background: 'linear-gradient(135deg,#6366f1,#a78bfa)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            display: 'inline-block', lineHeight: 1
           }}>SG</span>
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -246,7 +261,7 @@ export default function About() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.15, duration: 0.4 }}
-                    style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f1f5f9', letterSpacing: '-0.025em', marginBottom: '0.45rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                    style={{ fontSize: '1.35rem', fontWeight: 800, color: '#f1f5f9', letterSpacing: '-0.025em', marginBottom: '0.45rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
                   >
                     Sweta Ghosh
                   </motion.h1>
@@ -432,7 +447,7 @@ export default function About() {
             lineHeight: 1.15,
             marginBottom: '0.55rem',
           }}>
-            AI-Driven Frontend Developer
+            AI-Driven Frontend Developer &amp; Aspiring AI Engineer
           </h2>
 
           {/* Subtitle row */}
@@ -461,9 +476,9 @@ export default function About() {
             lineHeight: 1.85,
             marginBottom: '1rem',
           }}>
-            I build intelligent AI-powered web applications by combining React, Python, FastAPI,
-            Machine Learning, and Computer Vision to create scalable, user-centric solutions
-            that solve real-world problems.
+            I build intelligent web applications by combining React, Python, FastAPI,
+            Machine Learning, and Computer Vision to solve real-world problems through
+            scalable AI-powered software.
           </p>
 
           {/* Tech chips */}
@@ -617,14 +632,14 @@ export default function About() {
         <Card delay={0.15} style={{ padding: '1.6rem' }}>
           <SectionHeading>Technologies</SectionHeading>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(86px, 1fr))', gap: '0.7rem' }}>
-            {tech.map(({ icon, label, color }, i) => (
+            {tech.map(({ icon, label, color, level }, i) => (
               <motion.div key={label}
                 initial={{ opacity: 0, scale: 0.78, y: 10 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.38, delay: 0.045 * i, type: 'spring', stiffness: 220, damping: 18 }}
               >
-                <SkillCard icon={icon} label={label} color={color} />
+                <SkillCard icon={icon} label={label} color={color} level={level} />
               </motion.div>
             ))}
           </div>
@@ -633,7 +648,7 @@ export default function About() {
         {/* ══ CURRENTLY LEARNING CARD ══ */}
         <Card delay={0.18} style={{ padding: '1.6rem' }}>
           <SectionHeading>Currently Learning</SectionHeading>
-          <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.75, marginBottom: '1.1rem' }}>
+          <p style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
             Actively deepening expertise across these areas — each tied to a real project or goal.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -641,45 +656,70 @@ export default function About() {
               {
                 label: 'Deep Learning & Neural Networks',
                 detail: 'CNNs, transfer learning, model fine-tuning with PyTorch',
-                color: '#ee4c2c', pct: 55,
+                color: '#ee4c2c',
+                status: 'Building Production Projects',
+                statusColor: '#22c55e',
               },
               {
                 label: 'LLM Integration & Prompt Engineering',
                 detail: 'Connecting open-source LLMs to FastAPI backends',
-                color: '#a78bfa', pct: 40,
+                color: '#a78bfa',
+                status: 'Learning in Progress',
+                statusColor: '#a78bfa',
               },
               {
                 label: 'MLOps & Model Deployment',
                 detail: 'Docker, model serving, CI/CD for ML pipelines',
-                color: '#22c55e', pct: 35,
+                color: '#22c55e',
+                status: 'Currently Exploring',
+                statusColor: '#f59e0b',
               },
               {
                 label: 'Data Structures & Algorithms',
                 detail: 'Consistent LeetCode practice for engineering interviews',
-                color: '#f59e0b', pct: 50,
+                color: '#f59e0b',
+                status: 'Hands-on Learning',
+                statusColor: '#61dafb',
               },
-            ].map(({ label, detail, color, pct }) => (
-              <div key={label} style={{
-                background: 'rgba(255,255,255,0.025)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: '12px',
-                padding: '0.85rem 1rem',
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
-                  <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#e2e8f0' }}>{label}</span>
-                  <span style={{ fontSize: '0.68rem', color, fontWeight: 700, background: `${color}12`, padding: '0.1rem 0.55rem', borderRadius: 999, border: `1px solid ${color}25` }}>{pct}%</span>
+            ].map(({ label, detail, color, status, statusColor }) => (
+              <motion.div
+                key={label}
+                whileHover={{ x: 3, borderColor: `${color}28` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                style={{
+                  background: 'rgba(255,255,255,0.025)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '12px',
+                  padding: '1rem 1.1rem',
+                  display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'flex-start', gap: '0.75rem',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                    <span style={{
+                      width: 6, height: 6, borderRadius: '50%',
+                      background: color, flexShrink: 0,
+                      boxShadow: `0 0 6px ${color}`,
+                    }} />
+                    <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#e2e8f0' }}>{label}</span>
+                  </div>
+                  <p style={{ fontSize: '0.75rem', color: '#475569', paddingLeft: '0.9rem' }}>{detail}</p>
                 </div>
-                <p style={{ fontSize: '0.75rem', color: '#475569', marginBottom: '0.55rem' }}>{detail}</p>
-                <div style={{ height: 3, background: 'rgba(255,255,255,0.05)', borderRadius: 999, overflow: 'hidden' }}>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    style={{ height: '100%', borderRadius: 999, background: `linear-gradient(90deg, ${color}, ${color}88)`, boxShadow: `0 0 8px ${color}44` }}
-                  />
-                </div>
-              </div>
+                <span style={{
+                  fontSize: '0.65rem', fontWeight: 700,
+                  color: statusColor,
+                  background: `${statusColor}12`,
+                  border: `1px solid ${statusColor}28`,
+                  borderRadius: '999px',
+                  padding: '0.2rem 0.65rem',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}>
+                  ✦ {status}
+                </span>
+              </motion.div>
             ))}
           </div>
         </Card>

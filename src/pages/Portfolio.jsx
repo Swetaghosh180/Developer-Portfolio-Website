@@ -30,7 +30,7 @@ const projects = [
     status: 'featured',
     accentColor: '#6366f1',
     github: 'https://github.com/Swetaghosh180/VisionInspect-AI',
-    demo: 'https://swetaghosh-portfolio.netlify.app/',
+    demo: 'https://visioninspect-ai.netlify.app/',
   },
   {
     id: 2,

@@ -38,19 +38,19 @@ const skillCategories = [
 const education = [
   {
     title: 'Bachelor of Computer Applications (BCA)',
-    sub: 'Netaji Subhas University, Jamshedpur',
+    sub: 'Netaji Subhas University, Jamshedpur, Jharkhand',
     year: 'Aug 2023 – Aug 2026',
     desc: 'Pursuing BCA with coursework in data structures, algorithms, web technologies, database systems, and software engineering. Applying academic foundations directly to real-world AI and web projects.',
   },
   {
     title: 'Higher Secondary Education (12th)',
-    sub: 'Seemanta Mahavidyalaya, Jharpokharia',
+    sub: 'Seemanta Mahavidyalaya, Mayurbhanj,Odisha',
     year: '2023',
     desc: 'Science stream. Developed analytical thinking and problem-solving skills that now underpin my approach to ML and software engineering.',
   },
   {
     title: 'Secondary Education (10th)',
-    sub: 'TPS DAV Public School, Baharagora',
+    sub: 'TPS DAV Public School, Baharagora,Jharkhand',
     year: '2021',
     desc: 'Built early interest in computers and logical reasoning. Foundation for a self-driven journey into software development and AI.',
   },
@@ -68,9 +68,7 @@ const experience = [
 const certs = [
   { name: 'TATA GenAI Powered Data Analytics Certificate', issuer: 'Tata / Forage',  year: '2025' },
   { name: 'Front-End Development with React.js and Angular', issuer: 'Simplilearn',  year: 'Jul 2025' },
-  { name: 'Python Certification',                           issuer: 'freeCodeCamp', year: 'In Progress' },
-  { name: 'Responsive Web Design Certification',            issuer: 'freeCodeCamp', year: 'In Progress' },
-  { name: 'Front-End Development Libraries Certification',  issuer: 'freeCodeCamp', year: 'In Progress' },
+  { name: 'Python Certification', issuer: 'freeCodeCamp', year: 'In Progress' },
 ]
 
 function SectionLabel({ children, color = '#6366f1' }) {
