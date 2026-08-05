@@ -2,173 +2,291 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import ProjectCard from '../components/ProjectCard'
+import kitchenImg       from '../assets/images/SwetasKitchen.png'
+import portfolioImg     from '../assets/images/Portfolio.png'
+import ebhaktiImg       from '../assets/images/EBhakti_Image.png'
+import housePriceImg    from '../assets/images/HousePricePrediction_Project.png'
+import visionInspectImg from '../assets/images/VisionInspectAI.png'
+import aureliaImg       from '../assets/images/AurelioLuxe.png'
 
 const ease = [0.22, 1, 0.36, 1]
 
 const up = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.55, delay, ease },
+  transition: { duration: 0.52, delay, ease },
 })
 
 const projects = [
   {
     id: 1,
-    title: '★ VisionInspect AI — AI Image Analysis Platform',
-    description: 'Built a production-ready AI platform that accepts any image and returns object detection results (YOLOv8), extracted text in multiple languages (EasyOCR), and an AI-generated caption (BLIP Transformer). Outputs a downloadable PDF report. React + Tailwind frontend, FastAPI backend, SQLite for analysis history. Deployed frontend on Netlify.',
-    image: 'https://placehold.co/600x360/0d1220/6366f1?text=VisionInspect+AI',
-    tags: ['Python', 'FastAPI', 'React', 'YOLOv8', 'EasyOCR', 'BLIP', 'OpenCV', 'SQLite', 'Tailwind CSS'],
+    title: 'VisionInspect AI',
+    shortDesc: 'End-to-end AI platform for Object Detection, OCR, and Image Captioning with PDF export.',
+    image: visionInspectImg,
+    tags: ['Python', 'FastAPI', 'React', 'YOLOv8', 'EasyOCR', 'BLIP', 'OpenCV'],
+    highlights: ['Object Detection', 'Multilingual OCR', 'AI Captioning', 'PDF Reports'],
     category: 'AI/ML',
-    github: 'https://github.com/Swetaghosh180',
+    status: 'featured',
+    accentColor: '#6366f1',
+    github: 'https://github.com/Swetaghosh180/VisionInspect-AI',
     demo: 'https://swetaghosh-portfolio.netlify.app/',
-    featured: true,
   },
   {
     id: 2,
-    title: 'AI Plant Doctor — Plant Disease Detection  ·  In Progress',
-    description: 'Building a computer vision system that diagnoses plant diseases from leaf photographs using a PyTorch CNN model trained on a multi-class disease dataset. FastAPI serves predictions; React UI handles image upload, displays confidence scores, and recommends treatments. Goal: sub-2s inference on CPU.',
-    image: 'https://placehold.co/600x360/0d1220/22c55e?text=AI+Plant+Doctor',
+    title: 'AI Plant Doctor',
+    shortDesc: 'Deep Learning app for plant disease detection from leaf photographs using PyTorch CNN.',
+    image: 'https://placehold.co/600x400/061a10/22c55e?text=AI+Plant+Doctor',
     tags: ['Python', 'PyTorch', 'CNN', 'OpenCV', 'FastAPI', 'React'],
+    highlights: ['CNN Model', 'Disease Detection', 'Confidence Scores', 'Treatment Advice'],
     category: 'AI/ML',
+    status: 'inprogress',
+    accentColor: '#22c55e',
     github: 'https://github.com/Swetaghosh180',
-    demo: '#',
+    demo: null,
   },
   {
     id: 3,
-    title: 'House Price Prediction — End-to-End ML App',
-    description: 'End-to-end ML regression system: data cleaning, feature engineering, and model training with Linear Regression and Random Forest (Scikit-learn). Evaluated with MAE, RMSE, and R². Flask web app lets users input property features and receive instant price predictions. Demonstrates full ML pipeline ownership.',
-    image: 'https://placehold.co/600x360/0d1220/f59e0b?text=House+Price+ML',
-    tags: ['Python', 'Scikit-learn', 'Random Forest', 'Pandas', 'NumPy', 'Flask'],
-    category: 'AI/ML',
-    github: 'https://github.com/Swetaghosh180',
-    demo: '#',
+    title: 'House Price Prediction',
+    shortDesc: 'Full ML pipeline — data cleaning, feature engineering, model training and Flask prediction app.',
+    image: housePriceImg,
+    tags: ['Python', 'Scikit-learn', 'Random Forest', 'Pandas', 'Flask'],
+    highlights: ['ML Pipeline', 'Random Forest', 'MAE / R² Metrics', 'Flask Web App'],
+    category: 'Machine Learning',
+    status: 'production',
+    accentColor: '#f59e0b',
+    github: 'https://github.com/Swetaghosh180/House-Price-Prediction',
+    demo: null,
   },
   {
     id: 4,
-    title: 'eBhakti — Digital Scripture Library',
-    description: 'Vue 3 SPA devotional reading platform with dynamic routing for scriptures, stotras, mantras, and Bhagavad Gita verses. Supports 5 Indian languages via Vue reactivity. Premium editorial typography, distraction-free reading mode, and fully responsive mobile-first layout.',
-    image: 'https://placehold.co/600x360/0d1220/f97316?text=eBhakti',
-    tags: ['Vue.js', 'Vue Router', 'Tailwind CSS', 'JavaScript'],
-    category: 'Vue',
-    github: 'https://github.com/Swetaghosh180/eBhakti-Digital-Scripture-Library',
-    demo: '#',
-  },
-  {
-    id: 5,
-    title: 'Developer Portfolio — React + Framer Motion',
-    description: 'This portfolio — built with React, Tailwind CSS, and Framer Motion. Component-based architecture, React Router SPA, animated page transitions, spring-physics interactions, mobile-first responsive layout, and Netlify deployment. Demonstrates production-quality frontend engineering.',
-    image: 'https://placehold.co/600x360/0d1220/818cf8?text=Portfolio',
-    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite', 'JavaScript'],
-    category: 'React',
+    title: 'Developer Portfolio',
+    shortDesc: 'Modern React portfolio with Framer Motion animations, SPA routing, and Netlify deployment.',
+    image: portfolioImg,
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    highlights: ['React SPA', 'Spring Animations', 'Responsive UI', 'Netlify Deploy'],
+    category: 'Portfolio',
+    status: 'live',
+    accentColor: '#818cf8',
     github: 'https://github.com/Swetaghosh180/Developer-Portfolio-Website',
     demo: 'https://swetaghosh-portfolio.netlify.app/',
   },
   {
+    id: 5,
+    title: 'eBhakti',
+    shortDesc: 'Vue 3 SPA digital scripture library supporting 5 Indian languages with distraction-free reading.',
+    image: ebhaktiImg,
+    tags: ['Vue.js', 'Vue Router', 'Tailwind CSS', 'JavaScript'],
+    highlights: ['Multilingual', 'Vue Router', 'Responsive Design', 'SPA'],
+    category: 'Vue',
+    status: 'production',
+    accentColor: '#42b883',
+    github: 'https://github.com/Swetaghosh180/eBhakti-Digital-Scripture-Library',
+    demo: 'https://ebhakti-digital-scripture-library.netlify.app/',
+  },
+  {
     id: 6,
-    title: "Shweta's Kitchen — Multilingual Recipe Website",
-    description: 'Multi-page recipe website with a JavaScript-powered translation engine supporting 9 Indian languages. CSS glassmorphism UI, smooth animations, category-based navigation, and Bootstrap 5 mobile-first grid. Demonstrates vanilla JS architecture without frameworks.',
-    image: 'https://placehold.co/600x360/0d1220/f59e0b?text=Kitchen+Recipe',
+    title: "Shweta's Kitchen",
+    shortDesc: 'Multilingual recipe website with a JS translation engine supporting 9 Indian languages.',
+    image: kitchenImg,
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5'],
+    highlights: ['9 Languages', 'Glassmorphism UI', 'Category Nav', 'Vanilla JS'],
     category: 'JavaScript',
+    status: 'production',
+    accentColor: '#f97316',
     github: 'https://github.com/Swetaghosh180/Shwetas_Kitchen-PremiumRecipes',
     demo: 'https://swetaghosh180.github.io/Shwetas_Kitchen-PremiumRecipes/',
   },
   {
     id: 7,
-    title: 'Aurelia Luxe — Luxury E-Commerce Frontend',
-    description: 'Premium jewelry e-commerce UI with a black-and-gold design system, hero sliders, animated product cards, sticky navigation, search overlay, and Bootstrap 5 responsive grid. Deployed on GitHub Pages with version-controlled release workflow.',
-    image: 'https://placehold.co/600x360/0d1220/a78bfa?text=Aurelia+Luxe',
+    title: 'Aurelia Luxe',
+    shortDesc: 'Premium luxury jewelry e-commerce UI with black-and-gold design system and hero sliders.',
+    image: aureliaImg,
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5'],
+    highlights: ['E-Commerce UI', 'Hero Sliders', 'Product Cards', 'GitHub Pages'],
     category: 'JavaScript',
+    status: 'production',
+    accentColor: '#a78bfa',
     github: 'https://github.com/Swetaghosh180/Aurelia_Luxe-Luxury-Jewelry-E-Commerce-Website',
-    demo: '#',
+    demo: 'https://aurelialuxe-ecommercejewelry.netlify.app/',
   },
 ]
 
-const filters = ['All', 'AI/ML', 'React', 'Vue', 'JavaScript']
+const FILTERS = [
+  { label: 'All',              value: 'All' },
+  { label: 'AI / ML',         value: 'AI/ML' },
+  { label: 'Machine Learning', value: 'Machine Learning' },
+  { label: 'React',            value: 'React' },
+  { label: 'Vue',              value: 'Vue' },
+  { label: 'JavaScript',       value: 'JavaScript' },
+  { label: 'Portfolio',        value: 'Portfolio' },
+]
+
+const STATS = [
+  { value: '7',    label: 'Projects' },
+  { value: '3',    label: 'AI / ML' },
+  { value: '10+',  label: 'Technologies' },
+  { value: '100%', label: 'End-to-End' },
+]
+
+/* Inject focus ring CSS once */
+const FOCUS_STYLE = `
+  .card-focus-ring { opacity: 0 !important; }
+  article:focus-visible .card-focus-ring { opacity: 1 !important; }
+  article:focus { outline: none; }
+`
 
 export default function Portfolio() {
   const [active, setActive] = useState('All')
-  const filtered = active === 'All' ? projects : projects.filter(p => p.category === active)
+
+  const filtered = active === 'All'
+    ? projects
+    : projects.filter(p => p.category === active)
 
   return (
     <PageWrapper>
+      <style>{FOCUS_STYLE}</style>
       <div className="page-content">
 
-        {/* Header */}
-        <motion.div {...up(0)} style={{ marginBottom: '2.5rem' }}>
+        {/* ── HEADER ── */}
+        <motion.div {...up(0)} style={{ marginBottom: '1.75rem' }}>
           <p className="section-label">My work</p>
           <h1 className="section-title">
-            Featured <span className="gradient-text-2">Projects</span>
+            AI &amp; Frontend <span className="gradient-text-2">Engineering</span>
           </h1>
-          <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.8, maxWidth: 480, marginTop: '0.5rem' }}>
-            AI-powered applications, ML systems, and frontend projects — built end-to-end.
+          <p style={{
+            color: '#475569', fontSize: '0.88rem', lineHeight: 1.82,
+            maxWidth: 530, marginTop: '0.5rem',
+          }}>
+            A curated collection of production-ready AI, Machine Learning, Computer Vision,
+            and Frontend applications demonstrating modern software engineering practices.
           </p>
         </motion.div>
 
-        {/* Filter pills */}
-        <motion.div {...up(0.1)} style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-          {filters.map(f => {
-            const isActive = active === f
+        {/* ── STATS ROW ── */}
+        <motion.div {...up(0.06)} style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '0.65rem',
+          marginBottom: '1.75rem',
+        }}>
+          {STATS.map(({ value, label }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.06 + i * 0.05, ease }}
+              whileHover={{ y: -2, borderColor: 'rgba(99,102,241,0.22)' }}
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: '14px',
+                padding: '0.85rem 0.75rem',
+                textAlign: 'center',
+                transition: 'border-color 0.25s, box-shadow 0.25s',
+              }}
+            >
+              <p style={{
+                fontSize: 'clamp(1.1rem, 3vw, 1.4rem)',
+                fontWeight: 800, color: '#f1f5f9',
+                letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
+              }}>{value}</p>
+              <p style={{
+                fontSize: '0.6rem', color: '#475569', fontWeight: 600,
+                marginTop: '0.28rem', letterSpacing: '0.05em',
+                textTransform: 'uppercase', margin: '0.28rem 0 0',
+              }}>{label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* ── FILTER PILLS ── */}
+        <motion.div
+          {...up(0.1)}
+          role="group"
+          aria-label="Filter projects by category"
+          style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.75rem' }}
+        >
+          {FILTERS.map(({ label, value }) => {
+            const isActive = active === value
             return (
               <motion.button
-                key={f}
-                onClick={() => setActive(f)}
-                whileHover={{ scale: 1.05, y: -1 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                key={value}
+                onClick={() => setActive(value)}
+                whileHover={{ scale: 1.04, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 420, damping: 20 }}
+                aria-pressed={isActive}
                 style={{
-                  padding: '0.48rem 1.25rem',
-                  borderRadius: '999px',
+                  padding: '0.4rem 1rem',
+                  borderRadius: '8px',
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 600,
-                  fontSize: '0.82rem',
+                  fontSize: '0.76rem',
                   cursor: 'pointer',
-                  transition: 'all 0.25s ease',
-                  border: isActive ? '1px solid rgba(99,102,241,0.45)' : '1px solid rgba(255,255,255,0.07)',
+                  border: isActive
+                    ? '1px solid rgba(99,102,241,0.5)'
+                    : '1px solid rgba(255,255,255,0.07)',
                   background: isActive
                     ? 'linear-gradient(135deg,#6366f1,#4f46e5)'
                     : 'rgba(255,255,255,0.03)',
                   color: isActive ? '#fff' : '#64748b',
                   boxShadow: isActive
-                    ? '0 4px 20px rgba(99,102,241,0.45), inset 0 1px 0 rgba(255,255,255,0.15)'
+                    ? '0 4px 16px rgba(99,102,241,0.38), inset 0 1px 0 rgba(255,255,255,0.12)'
                     : 'none',
                   letterSpacing: '-0.01em',
-                  position: 'relative', overflow: 'hidden',
+                  transition: 'all 0.2s ease',
+                  outline: 'none',
+                }}
+                onFocus={e => { e.currentTarget.style.boxShadow = `0 0 0 2px rgba(99,102,241,0.5)` }}
+                onBlur={e => {
+                  e.currentTarget.style.boxShadow = isActive
+                    ? '0 4px 16px rgba(99,102,241,0.38), inset 0 1px 0 rgba(255,255,255,0.12)'
+                    : 'none'
                 }}
               >
-                {f}
-                {isActive && (
-                  <motion.div
-                    layoutId="filter-bg"
-                    style={{
-                      position: 'absolute', inset: 0, borderRadius: '999px',
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.1), transparent)',
-                      pointerEvents: 'none',
-                    }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
+                {label}
               </motion.button>
             )
           })}
         </motion.div>
 
-        {/* Grid */}
+        {/* ── PROJECT COUNT ── */}
+        <motion.p
+          key={active}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            fontSize: '0.72rem', color: '#334155', fontWeight: 600,
+            letterSpacing: '0.06em', textTransform: 'uppercase',
+            marginBottom: '1.1rem',
+          }}
+        >
+          {filtered.length} project{filtered.length !== 1 ? 's' : ''}
+          {active !== 'All' ? ` · ${active}` : ''}
+        </motion.p>
+
+        {/* ── GRID ── */}
         <motion.div
           layout
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', gap: '1.3rem' }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(295px, 1fr))',
+            gap: '1.15rem',
+            alignItems: 'start',
+          }}
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                initial={{ opacity: 0, scale: 0.93, y: 18 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.85, y: -12 }}
-                transition={{ duration: 0.38, delay: i * 0.06, ease }}
+                exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                transition={{ duration: 0.32, delay: i * 0.045, ease }}
               >
                 <ProjectCard project={project} />
               </motion.div>

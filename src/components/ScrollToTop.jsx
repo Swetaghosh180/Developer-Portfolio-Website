@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { RiArrowUpLine } from 'react-icons/ri'
 
 export default function ScrollToTop() {
+  const { pathname } = useLocation()
   const [visible, setVisible] = useState(false)
 
+  /* Scroll to top on every route change */
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
+
+  /* Show/hide back-to-top button */
   useEffect(() => {
     const fn = () => setVisible(window.scrollY > 320)
     window.addEventListener('scroll', fn)
@@ -22,6 +30,7 @@ export default function ScrollToTop() {
           whileHover={{ scale: 1.14, y: -3 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll back to top"
           style={{
             position: 'fixed', bottom: '5rem', right: '1.25rem', zIndex: 99,
             width: 44, height: 44, borderRadius: '13px', border: 'none', cursor: 'pointer',
@@ -30,7 +39,6 @@ export default function ScrollToTop() {
             boxShadow: '0 4px 24px rgba(99,102,241,0.55), 0 0 0 1px rgba(99,102,241,0.35)',
           }}
         >
-          {/* Pulse ring */}
           <div style={{
             position: 'absolute', inset: 0, borderRadius: '13px',
             border: '1px solid rgba(99,102,241,0.5)',
