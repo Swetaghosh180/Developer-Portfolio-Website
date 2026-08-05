@@ -82,7 +82,7 @@ const projects = [
     status: 'production',
     accentColor: '#42b883',
     github: 'https://github.com/Swetaghosh180/eBhakti-Digital-Scripture-Library',
-    demo: 'https://ebhakti-digital-scripture-library.netlify.app/',
+    demo: 'https://ebhakti-digitalscripturelibrary.netlify.app/',
   },
   {
     id: 6,
